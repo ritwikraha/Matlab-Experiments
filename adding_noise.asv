@@ -1,0 +1,13 @@
+%% importing the image
+% moon.tif is already pre-loaded in MATLAB
+I =imread('moon.tif');
+%% type in help imnoise to find information regarding the function
+J = imnoise(I,'gaussian')
+J2 = imnoise(I,'salt & pepper')
+J3 = imnoise(I,'poisson')
+%% displaying the images
+net = denoisingNetwork('DnCNN');
+I2=imread('Moon_from_redmi.jpg');
+denoisedI = denoiseImage(noisyI,net);
+montage({I,noisyI})
+title('Original Image (Left) and Noisy Image (Right)')
